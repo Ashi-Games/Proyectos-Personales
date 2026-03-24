@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+}
+
+.si { background-color: #ff69b4; }
+.no { background-color: #ff4d6d; position: absolute; }
+
+.music-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: #ff69b4;
+}
+
+/* Corazones */
+.corazon {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  to { transform: translateY(100vh); }
+}
+
+/* Texto máquina */
+#texto {
+  border-right: 2px solid white;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+/* Nombre animado */
+.nombre {
+  font-size: 40px;
+  font-weight: bold;
+  animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+  from { opacity: 0.5; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  h1 { font-size: 22px; }
+}
