@@ -1,40 +1,84 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+  background: linear-gradient(135deg, #6a11cb, #ff758c);
   color: white;
   text-align: center;
   overflow: hidden;
 }
 
+/* Contenedor */
 .container {
   padding: 20px;
   margin-top: 60px;
   position: relative;
   z-index: 2;
+  animation: aparecer 1.5s ease;
 }
 
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título */
 h1 {
   font-size: 26px;
+  animation: fadeIn 2s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Botones */
 button {
   padding: 12px 20px;
   margin: 10px;
   font-size: 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.si { background-color: #ff69b4; }
-.no { background-color: #ff4d6d; position: absolute; }
+/* Botón SI */
+.si {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+}
 
+.si:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 118, 156, 0.8);
+}
+
+/* Botón NO */
+.no {
+  background: linear-gradient(135deg, #ff4d6d, #ff1e56);
+  position: absolute;
+}
+
+.no:hover {
+  transform: scale(1.1);
+}
+
+/* Botón música */
 .music-btn {
   position: fixed;
   top: 10px;
   right: 10px;
   background: white;
-  color: #ff69b4;
+  color: #ff4d6d;
+  border-radius: 50%;
+  font-size: 18px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: rotate(20deg) scale(1.1);
 }
 
 /* Corazones */
@@ -54,6 +98,12 @@ button {
   border-right: 2px solid white;
   display: inline-block;
   padding-right: 5px;
+  animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 50%, 100% { border-color: white; }
+  25%, 75% { border-color: transparent; }
 }
 
 /* Nombre animado */
@@ -64,8 +114,8 @@ button {
 }
 
 @keyframes brillo {
-  from { opacity: 0.5; transform: scale(1); }
-  to { opacity: 1; transform: scale(1.1); }
+  from { opacity: 0.6; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.15); }
 }
 
 /* Responsive */

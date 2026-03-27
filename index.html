@@ -3,140 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti ❤️</title>
+    <title>Para Ti </title>
     <link rel="stylesheet" href="amor.css">
 </head>
 
 <body>
 
-<audio id="musica" loop>
-  <source src="Cuando_se_Ama_-_Masiel_Malaga_y_su_salsa_red__En_Vivo_(256k).mp3" type="audio/mpeg">
-</audio>
+<audio id="musica" src="Cuando_se_Ama_-_Masiel_Malaga_y_su_salsa_red__En_Vivo_(256k).mp3" loop autoplay></audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <div class="container">
-  <h1>Hola Karolina ❤️</h1>
-  <p>Toca para ver algo especial...</p>
+  <h1>Hola Karolina </h1>
+  <p>tengo algo que decirte...</p>
 
-  <button onclick="iniciarMensaje()">Tócame 💌</button>
+  <button onclick="iniciarMensaje()">abreme :v</button>
 
   <div id="mensaje" style="display:none;">
     <p id="texto"></p>
 
-    <h2>¿Quieres ser mi enamorada? 😳💖</h2>
+    <h2>Lista para ver lo que te tengo que decir :v</h2>
 
-    <button class="si" onclick="respuestaSi()">Sí 💖</button>
-    <button class="no" id="noBtn" ontouchstart="moverBoton()">No 😢</button>
+    <button class="si" onclick="respuestaSi()">Sí </button>
+    <button class="no" id="noBtn" ontouchstart="moverBoton()">No </button>
   </div>
 </div>
 
-<script>
-const mensaje = `Karolina ❤️
-
-Desde que empezamos a hablar todo cambió para mí...
-Pasamos de conocernos a algo tan especial,
-
-y poco a poco me di cuenta de lo mucho que significas para mí 💖
-
-Me haces reír, me haces sentir tranquilo,
-y sobre todo feliz...
-
-Y no quiero que esto se quede en un "algo"
-
-Quiero que seas parte de mi vida de verdad 💘
-`;
-
-let i = 0;
-
-function iniciarMensaje() {
-  document.getElementById("mensaje").style.display = "block";
-  escribir();
-}
-
-function escribir() {
-  if (i < mensaje.length) {
-    document.getElementById("texto").innerHTML += mensaje.charAt(i);
-    i++;
-    setTimeout(escribir, 40);
-  }
-}
-
-/* FINAL ÉPICO */
-function respuestaSi() {
-  document.body.innerHTML = `
-    <div style="
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      flex-direction:column;
-      background: linear-gradient(135deg, #ff4d6d, #ff1493);
-      color:white;
-      text-align:center;
-      padding:20px;
-    ">
-      <div class="nombre">Karolina 💖</div>
-      <h1>Sabía que dirías que sí 😍</h1>
-      <p style="font-size:20px;">
-        Ahora sí oficialmente eres mi enamorada 💘<br><br>
-       Prometo seguir molestándote pero queriéndote más 😆💖
-    </div>
-  `;
-
-  // Vibración (celular)
-  if (navigator.vibrate) {
-    navigator.vibrate([200, 100, 200]);
-  }
-
-  // Corazones más intensos
-  setInterval(() => {
-    const c = document.createElement("div");
-    c.innerHTML = "💖";
-    c.style.position = "fixed";
-    c.style.top = "-10px";
-    c.style.left = Math.random() * 100 + "vw";
-    c.style.fontSize = "25px";
-    c.style.animation = "caer 3s linear";
-    document.body.appendChild(c);
-
-    setTimeout(() => c.remove(), 3000);
-  }, 200);
-}
-
-/* Botón que se escapa */
-function moverBoton() {
-  let btn = document.getElementById("noBtn");
-  btn.style.top = Math.random() * window.innerHeight + "px";
-  btn.style.left = Math.random() * window.innerWidth + "px";
-}
-
-/* Música */
-let audio = document.getElementById("musica");
-let reproduciendo = false;
-
-function toggleMusic() {
-  if (!reproduciendo) {
-    audio.play();
-    reproduciendo = true;
-  } else {
-    audio.pause();
-    reproduciendo = false;
-  }
-}
-
-/* Corazones iniciales */
-function crearCorazon() {
-  const c = document.createElement("div");
-  c.classList.add("corazon");
-  c.innerHTML = "❤️";
-  c.style.left = Math.random() * 100 + "vw";
-  c.style.animationDuration = (Math.random() * 3 + 2) + "s";
-  document.body.appendChild(c);
-  setTimeout(() => c.remove(), 5000);
-}
-setInterval(crearCorazon, 300);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
