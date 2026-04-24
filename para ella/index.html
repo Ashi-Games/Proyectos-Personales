@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños, Mor ❤️</title>
+    <link rel="stylesheet" href="xd.css">
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- Carrusel Izquierdo -->
+        <div class="side-carousel left">
+            <h3 class="side-title">No tenemos mil fotos…</h3>
+            <div class="vertical-carousel">
+                <button class="carousel-btn prev-btn-left">▲</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="leftTrack">
+                        <img src="ella.jpg.jpeg" alt="Momento 1" class="carousel-image">
+                        <img src="mall.jpg (3).jpeg" alt="Momento 2" class="carousel-image">
+                        <img src="mall.jpg (2).jpeg" alt="Momento 3" class="carousel-image">
+                        <img src="mall.jpg.jpeg" alt="Momento 4" class="carousel-image">
+                        <img src="mall.jpg (4).jpeg" alt="Momento 5" class="carousel-image">
+                        <img src="mall.jpg.jpeg" alt="Momento 6" class="carousel-image">
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn-left">▼</button>
+            </div>
+        </div>
+
+        <!-- Tarjeta Central -->
+        <div class="card">
+            <div class="card-inner">
+                <!-- Frente -->
+                <div class="front">
+                    <div class="hover-text">Abre aquí, mor ❤️</div>
+                    <div class="cover-shape-large">
+                        <div class="shape-diamond"></div>
+                        <div class="shape-block">
+                            <div class="cake">
+                                <div class="layer layer-bottom"></div>
+                                <div class="layer layer-middle"></div>
+                                <div class="layer layer-top"></div>
+                                <div class="icing"></div>
+                                <div class="drip drip1"></div>
+                                <div class="drip drip2"></div>
+                                <div class="drip drip3"></div>
+                                <div class="candle">
+                                    <div class="flame"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reverso -->
+                <div class="back">
+                    <div class="text-container">
+                        <h1 class="head">Feliz Cumpleaños, More!</h1>
+                        <p>Me gusta lo que estamos construyendo poco a poco...  
+                            tu forma de ser, de reír y la manera en que haces que todo se sienta más ligero ✨</p>
+                        <p>No sé exactamente a dónde nos lleve esto,  
+                            pero sí sé que me nace seguir conociéndote y compartiendo momentos contigo 💫</p>
+                            <p>Espero que tengas un cumpleaños increíble,  
+                                lleno de cosas buenas y personas que te hagan feliz ❤️</p>
+                        <p class="signature">Con cariño 💖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrusel Derecho -->
+        <div class="side-carousel right">
+            <h3 class="side-title">pero sí buenos momentos</h3>
+            <div class="vertical-carousel">
+                <button class="carousel-btn prev-btn-right">▲</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="rightTrack">
+                        <img src="peliados.jpg (2).jpeg" alt="Momento 7" class="carousel-image">
+                        <img src="peliados.jpg (3).jpeg".jpg" alt="Momento 8" class="carousel-image">
+                        <img src="peliados.jpg.jpeg" alt="Momento 9" class="carousel-image">
+                        <img src="peliados.jpg (2).jpeg" alt="Momento 10" class="carousel-image">
+                        <img src="peliados.jpg.jpeg" alt="Momento 11" class="carousel-image">
+                        <img src="ella.jpg.jpeg" alt="Momento 12" class="carousel-image">
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn-right">▼</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Música -->
+    <audio id="background-music" loop>
+        <source src="los parra-por verte feliz.mp3.mp4" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" class="music-button">♪ Música</button>
+
+    <script src="confeti.js"></script>
+    <script>
+        // Confeti
+        function launchConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 180, spread: 80, origin: { y: 0.6 } });
+            }
+        }
+        document.querySelector('.card').addEventListener('mouseenter', launchConfetti);
+
+        // Música
+        const music = document.getElementById('background-music');
+        const musicBtn = document.getElementById('music-btn');
+        music.volume = 0.35;
+        music.play().catch(() => {});
+
+        musicBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicBtn.textContent = '⏸ Pausar';
+            } else {
+                music.pause();
+                musicBtn.textContent = '♪ Música';
+            }
+        });
+
+        // ==================== CARRUSELES LATERALES ====================
+
+        // Carrusel Izquierdo
+        let leftIndex = 0;
+        const leftTrack = document.getElementById('leftTrack');
+        const leftImages = leftTrack.querySelectorAll('.carousel-image');
+        const leftTotal = leftImages.length;
+
+        const prevLeft = document.querySelector('.prev-btn-left');
+        const nextLeft = document.querySelector('.next-btn-left');
+
+        function moveLeft() {
+            const offset = -leftIndex * 270;
+            leftTrack.style.transform = `translateY(${offset}px)`;
+        }
+
+        prevLeft.addEventListener('click', () => {
+            leftIndex = (leftIndex - 1 + leftTotal) % leftTotal;
+            moveLeft();
+        });
+
+        nextLeft.addEventListener('click', () => {
+            leftIndex = (leftIndex + 1) % leftTotal;
+            moveLeft();
+        });
+
+        // Carrusel Derecho
+        let rightIndex = 0;
+        const rightTrack = document.getElementById('rightTrack');
+        const rightImages = rightTrack.querySelectorAll('.carousel-image');
+        const rightTotal = rightImages.length;
+
+        const prevRight = document.querySelector('.prev-btn-right');
+        const nextRight = document.querySelector('.next-btn-right');
+
+        function moveRight() {
+            const offset = -rightIndex * 270;
+            rightTrack.style.transform = `translateY(${offset}px)`;
+        }
+
+        prevRight.addEventListener('click', () => {
+            rightIndex = (rightIndex - 1 + rightTotal) % rightTotal;
+            moveRight();
+        });
+
+        nextRight.addEventListener('click', () => {
+            rightIndex = (rightIndex + 1) % rightTotal;
+            moveRight();
+        });
+
+        // Autoplay para ambos
+        setInterval(() => {
+            leftIndex = (leftIndex + 1) % leftTotal;
+            moveLeft();
+        }, 4200);
+
+        setInterval(() => {
+            rightIndex = (rightIndex + 1) % rightTotal;
+            moveRight();
+        }, 3800);
+    </script>
+</body>
+</html>

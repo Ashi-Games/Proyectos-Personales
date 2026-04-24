@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Nobile:ital,wght@400;700&display=swap');
+
+:root {
+    --border-color: #f9f9f9;
+    --vanilla: #FF69B4;
+    --chocolate: #9B59B6;
+    --pink: #FF6B6B;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--pink);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nobile', sans-serif;
+}
+
+.card {
+    perspective: 1200px;
+    width: 390px;
+    height: 550px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.9s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Frente y Reverso */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 12px solid var(--border-color);
+    border-radius: 12px;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.front {
+    background: linear-gradient(135deg, #FF1493, #DB2777);
+}
+
+.back {
+    background: rgb(230, 190, 250);
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 25px;
+    box-sizing: border-box;
+}
+
+/* Texto compacto en el reverso */
+.text-container {
+    color: #580803;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.head {
+    font-size: 1.85em;           /* Más compacto y ajustado */
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ed0d7d, #E74C3C, #d14119);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.text-container p {
+    font-size: 1.22em;
+    margin: 13px 0;
+    font-style: italic;
+}
+
+.signature {
+    margin-top: 25px;
+    font-size: 1.18em;
+    font-weight: bold;
+    color: #9B59B6;
+}
+
+/* Hover text */
+.hover-text {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    z-index: 20;
+    font-weight: 700;
+}
+
+/* Pastel y decoración (mantenido compacto) */
+.cover-shape-large {
+    position: absolute;
+    width: 58%;
+    height: 42%;
+    top: 26%;
+    left: 21%;
+}
+
+.shape-block, .shape-diamond {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.shape-diamond {
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.shape-block {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cake {
+    position: relative;
+    width: 108px;
+    height: 85px;
+}
+
+.layer {
+    position: absolute;
+    width: 108px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--chocolate);
+    box-shadow: 0 3px 0 #5a4520, 0 6px 0 #4e3c1c, 0 9px 0 #423318;
+}
+
+.layer-top    { top: 0; }
+.layer-middle { top: 14px; }
+.layer-bottom { top: 28px; }
+
+.icing {
+    top: 2px; left: 4px;
+    width: 100px; height: 34px;
+    background: var(--vanilla);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.icing::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 6px; right: 6px; bottom: 5px;
+    background: #f5e8d6;
+    border-radius: 50%;
+}
+
+.drip {
+    position: absolute;
+    width: 19px;
+    height: 26px;
+    background: var(--vanilla);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.drip1 { top: 24px; left: 8px;  transform: skewY(12deg); height: 21px; width: 17px; }
+.drip2 { top: 29px; left: 74px; transform: skewY(-14deg); }
+.drip3 { top: 33px; left: 38px; width: 22px; height: 19px; }
+
+.candle {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 26px;
+    background: #f8d5a3;
+    border-radius: 4px 4px 1px 1px;
+}
+
+.flame {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 16px;
+    background: #FF6B35;
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 0 0 12px #FF4500, 0 0 25px #FF8C00;
+    animation: flicker 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes flicker {
+    0%   { transform: translateX(-50%) scale(1); }
+    100% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* Música button */
+.music-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Carruseles laterales */
+.side-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-title {
+    color: #9B59B6;
+    font-size: 1.35em;
+    margin-bottom: 12px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Estilos del carrusel vertical (mismo que antes pero adaptado) */
+.vertical-carousel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carousel-viewport {
+    width: 220px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s ease-in-out;
+}
+
+.carousel-image {
+    width: 220px;
+    height: 320px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 18px;
+}
+
+.carousel-btn {
+    background: rgba(155, 89, 182, 0.9);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:hover {
+    background: #9B59B6;
+    transform: scale(1.1);
+}
+
+/* Ajustes a la tarjeta central */
+.card {
+    perspective: 1200px;
+    width: 390px;
+    height: 550px;
+    flex-shrink: 0;
+}
+
+/* =========================
+   📱 MODO CELULAR
+========================= */
+@media (max-width: 768px) {
+
+    html, body {
+        overflow: auto; /* permite scroll */
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* Contenedor principal en columna */
+    .main-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    /* Tarjeta más pequeña */
+    .card {
+        width: 90%;
+        height: 500px;
+    }
+
+    /* Carruseles más pequeños */
+    .carousel-viewport {
+        width: 180px;
+        height: 260px;
+    }
+
+    .carousel-image {
+        width: 180px;
+        height: 260px;
+    }
+
+    /* Texto más cómodo */
+    .head {
+        font-size: 1.5em;
+    }
+
+    .text-container p {
+        font-size: 1em;
+    }
+
+    /* Botón música más cómodo */
+    .music-button {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* 📱 Pantallas muy pequeñas */
+@media (max-width: 480px) {
+
+    .card {
+        height: 460px;
+    }
+
+    .carousel-viewport {
+        width: 150px;
+        height: 220px;
+    }
+
+    .carousel-image {
+        width: 150px;
+        height: 220px;
+    }
+
+    .head {
+        font-size: 1.3em;
+    }
+
+    .text-container p {
+        font-size: 0.95em;
+    }
+}
